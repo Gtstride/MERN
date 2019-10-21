@@ -36,8 +36,10 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^2.4.0",
     "airbnb": "0.0.2",
     "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
     "nodemon": "^1.19.4"
   }
 }
