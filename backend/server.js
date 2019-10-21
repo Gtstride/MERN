@@ -6,4 +6,4 @@ app.get('/', (req, res) => res.send('Hey! there, how dddo you do'));
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => )
+app.listen(port, () => console.log(`Web Running on port ${port}`));
