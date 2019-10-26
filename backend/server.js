@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-console */
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,7 +11,7 @@ const profile = require('./routes/api/profile');
 
 const app = express();
 
-//DB Config 
+// DB Config
 const db = require('./config/keys').mongoURI;
 
 // Body parser middleware
@@ -19,10 +21,10 @@ app.use(bodyParser.json());
 // Connect to MongoDB
 mongoose
   .connect(db)
-  .then(() => console.log('MongoDB Connected Successfully'))
-  .catch(err => console.log(err));
+  .then(() => newFunction()('MongoDB Connected Successfully'))
+  .catch((err) => console.log(err));
 
-// Passport Middleware 
+// Passport Middleware
 app.use(passport.initialize());
 
 // Passport config
@@ -36,3 +38,6 @@ app.use('/api/profile', profile);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Web App is live on port ${port}`));
+function newFunction() {
+  return console.log;
+}
