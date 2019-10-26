@@ -1,26 +1,30 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-undef */
+/* eslint-disable no-multi-assign */
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 // Create Schema
 const UserSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: false
+    required: true,
   },
-  password:  {
+  password: {
     type: String,
-    required: true
+    required: true,
   },
-  avatar:  {
-    type: String
+  avatar: {
+    type: String,
   },
-  date:  {
+  date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
