@@ -4,7 +4,7 @@
   "description": "Social Network Wb App for Developers",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client", 
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon ./backend/server.js",
     "client": "npm start --prefix client",
