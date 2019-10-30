@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable consistent-return */
-
 const express = require('express');
 
 const router = express.Router();

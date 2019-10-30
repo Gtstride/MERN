@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-multi-assign */
-/* eslint-disable prefer-destructuring */
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

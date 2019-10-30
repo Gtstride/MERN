@@ -17,7 +17,19 @@ module.exports = {
     sourceType: "module"
   },
   plugins: ["react"],
-  rules: 
-    {
-    }
+  rules: {
+    "no-console": 0,
+    "no-restricted-syntax": "off",
+    "no-shadow": 0,
+    "consistent-return": "off",
+    "prefer-destructuring": "off",
+    "camelcase": 0,
+    "no-undef": 0,
+    "no-multi-assign": "off",
+    "no-param-reassign": "off",
+    "no-use-before-define": "off",
+    "no-unused var": "off",
+    "max-len":"off",
+    "no-underscore-dangle": 1,
+  }
 };

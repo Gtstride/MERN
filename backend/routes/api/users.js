@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable consistent-return */
-
 const express = require('express');
 
 const router = express.Router();
