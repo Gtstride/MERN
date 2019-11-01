@@ -30,6 +30,6 @@ module.exports = {
     "no-use-before-define": "off",
     "no-unused var": "off",
     "max-len":"off",
-    "no-underscore-dangle": 1,
+    "no-underscore-dangle": 0,
   }
 };
