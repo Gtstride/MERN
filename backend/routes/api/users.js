@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable consistent-return */
-
 const express = require('express');
 
 const router = express.Router();
@@ -39,6 +35,7 @@ router.post('/register', (req, res) => {
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
+    console.log(email);
     if (user) {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);

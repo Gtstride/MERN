@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 const express = require('express');
 
 const router = express.Router();

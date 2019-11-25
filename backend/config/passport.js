@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable camelcase */
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
