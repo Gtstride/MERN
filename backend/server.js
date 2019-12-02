@@ -22,7 +22,7 @@ mongoose
   .then(() => newFunction()('MongoDB Connected Successfully'))
   .catch((err) => console.log(err));
 
-// Passport Middleware
+// Passportn Middleware
 app.use(passport.initialize());
 
 // Passport config
