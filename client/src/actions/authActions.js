@@ -2,10 +2,10 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_CURRENT_PROFILE } from "./types";
 
 //  Register User
-export const registeruser = (userData, history) => dispatch => {
+export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login"))
@@ -47,6 +47,13 @@ export const setCurrentUser = decoded => {
   };
 };
 
+// Clear Current Profile
+export const clearCurrentProfile = decoded => {
+  return {
+    type: CLEAR_CURRENT_PROFILE,
+    payload: decoded
+  };
+};
 
 // Log User Out
 export const logoutUser = () => dispatch => {
@@ -60,4 +67,4 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 }
 
-export default { registeruser, setCurrentUser };
+export default { registerUser, setCurrentUser };
