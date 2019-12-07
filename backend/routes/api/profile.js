@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 
 const router = express.Router();
@@ -207,7 +208,12 @@ router.post(
       // Add to Experience array
       profile.experience.unshift(newExp);
 
-      profile.save().then((profile) => res.json(profile));
+      profile
+        .save()
+        .then((profile) => res.json(profile))
+        .catch((err) => {
+          console.log(err);
+        });
     });
   },
 );
@@ -272,7 +278,6 @@ router.delete(
   },
 );
 
-
 /**
  * @route DELETE api/profile/education/:edu_id
  * @desc Delete Education from profile
@@ -297,7 +302,6 @@ router.delete(
   },
 );
 
-
 /**
  * @route DELETE api/profile
  * @desc Delete profile
@@ -307,12 +311,10 @@ router.delete(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Profile.findOneAndRemove({ user: req.user.id })
-      .then(() => {
-        User.findOneAndRemove({ _id: req.user.id }).then(() => res.status(200)).json({
-          success: true,
-        });
-      });
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id })
+        .then(() => res.json({ success: true }));
+    });
   },
 );
 
