@@ -17,7 +17,7 @@ const validatePostInput = require('../../validation/post');
  * @desc Tests posts route
  * @access Public
  */
-router.get('/test', (req, res) => res.json({ mesg: 'Posts  Works just fine' }));
+router.get('/test', (req, res) => res.json({ mesg: 'Posts Works just fine' }));
 
 /**
  * @route GET api/posts
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   Post.find()
     .sort({ date: -1 })
     .then((posts) => res.json(posts))
-    .catch(() => res.status(404).json({ nopostfound: 'There are noo such post' }));
+    .catch(() => res.status(404).json({ nopostfound: 'There are no such post' }));
 });
 
 /**
@@ -191,14 +191,15 @@ router.post(
       // Add to commeent Arrary
       post.comments.unshift(newComment);
 
+      // Save
       post
         .save()
-        .then(() => res.json())
+        .then((post) => res.json(post))
         .catch(() => res.status(404).json({ postnotfound: 'No post found' }));
+    // console.log(error));
     });
   },
 );
-
 
 /**
  * @route DELETE api/posts/comment/:id/:comment/id
@@ -209,25 +210,31 @@ router.delete(
   '/comment/:id/:comment_id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Post.findById(req.params.id)
-      .then((post) => {
+    Post.findById(req.params.id).then((post) => {
       // Check to see if comment exists
-        if (post.comments.filter((comment) => comment._id.toString() === req.params.comment_id).length === 0) {
-          return res.status(404).json({ commentdoesnotexists: 'Comment does not exist' });
-        }
+      if (
+        post.comments.filter(
+          (comment) => comment._id.toString() === req.params.comment_id,
+        ).length === 0
+      ) {
+        return res
+          .status(404)
+          .json({ commentdoesnotexists: 'Comment does not exist' });
+      }
 
-        // Get remove index
-        const removeIndex = post.comments
-          .map((item) => item._id.toString())
-          .indexOf(req.params.comment_id);
+      // Get remove index
+      const removeIndex = post.comments
+        .map((item) => item._id.toString())
+        .indexOf(req.params.comment_id);
 
-        // Splice comment out of array
-        post.comments.splice(removeIndex, 1);
+      // Splice comment out of array
+      post.comments.splice(removeIndex, 1);
 
-        post.save()
-          .then(() => res.json(post))
-          .catch(() => res.status(404).json({ postnotfound: 'No post found' }));
-      });
+      post
+        .save()
+        .then(() => res.json(post))
+        .catch(() => res.status(404).json({ postnotfound: 'No post found' }));
+    });
   },
 );
 
