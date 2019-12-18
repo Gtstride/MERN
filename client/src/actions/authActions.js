@@ -66,5 +66,3 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which set isAuthenticates to false
   dispatch(setCurrentUser({}));
 }
-
-export default { registerUser, setCurrentUser };
