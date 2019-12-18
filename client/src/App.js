@@ -8,7 +8,6 @@ import setAuthToken from "./utils/setAuthToken";
 import store from "./store";
 
 import PrivateRoute from "./components/common/PrivateRoute";
-
 import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import Landing from "./components/layouts/Landing";
@@ -19,6 +18,11 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-creditentials/AddExperience";
 import AddEducation from "./components/add-creditentials/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
+import NotFound from "./components/not-found/NotFound";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 import "./App.css";
 
@@ -56,6 +60,8 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
@@ -89,6 +95,17 @@ function App() {
                 component={AddEducation}
               />
             </Switch>
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Posts} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/post/:id"
+                component={Post}
+              />
+            </Switch>
+            <Route exact path="/not-found" component={NotFound} />
           </div>
           <Footer />
         </div>
