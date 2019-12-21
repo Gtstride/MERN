@@ -120,11 +120,9 @@ router.post(
 
           // Add user id to likes array
           post.likes.unshift({ user: req.user.id });
-          post.save().then(() => res.json(post));
+          post.save().then((post) => res.json(post));
         })
-        .catch(() => res
-          .status(404)
-          .json({ alreadylikedpost: 'Thanks for your show of love' }));
+        .catch(() => res.status(404).json({ postnotfound: 'Thanks for your show of love' }));
     });
   },
 );
@@ -158,9 +156,9 @@ router.post(
           // Splice out of array
           post.likes.splice(removeIndex, 1);
 
-          post.save().then(() => res.json(post)); // Save dislike
+          post.save().then((post) => res.json(post)); // Save dislike
         })
-        .catch(() => res.status(404).json({ alreadylikedpost: 'No post found' }));
+        .catch(() => res.status(404).json({ postnotfound: 'No post found' }));
     });
   },
 );
@@ -196,7 +194,7 @@ router.post(
         .save()
         .then((post) => res.json(post))
         .catch(() => res.status(404).json({ postnotfound: 'No post found' }));
-    // console.log(error));
+      // console.log(error));
     });
   },
 );
