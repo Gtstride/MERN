@@ -19,6 +19,11 @@ npm install
 npm run dev
 ```
 
+## API
+
+The App is currently in version 1 (v1) and is hosted at
+[https://afternoon-caverns-04028.herokuapp.com/](https://afternoon-caverns-04028.herokuapp.com/)
+
 ```
 Author
 Godstime Agho O
